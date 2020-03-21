@@ -24,4 +24,3 @@ CREATE : / campgrounds/:id/comments        POST REQUEST
 * display comments nicely
 
 
-<!-- mongodb+srv://saeedhassan:<password>@cluster0-ctusi.mongodb.net/test?retryWrites=true&w=majority -->

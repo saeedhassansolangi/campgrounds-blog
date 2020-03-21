@@ -25,7 +25,7 @@ const authRoutes = require("./routes/auth")
 //mongoose.connect("mongodb://localhost/yelp_camp_for_restful_api_deployingToHeroku",{ useNewUrlParser: true ,useUnifiedTopology: true });
 var url = process.env.DATABASEURL ||"mongodb://localhost/yelp_camp_for_restful_api_deployingToHeroku" 
 
-// mongoose.connect("mongodb+srv://saeedhassan:03443239722saeed@cluster0-ctusi.mongodb.net/yelpcamp?retryWrites=true&w=majority",{ useNewUrlParser: true ,useUnifiedTopology: true })
+// mongoose.connect("mongodb+srv://saeedhassan:<PASSWORDHERE>@cluster0-ctusi.mongodb.net/yelpcamp?retryWrites=true&w=majority",{ useNewUrlParser: true ,useUnifiedTopology: true })
 mongoose.connect(url,{ useNewUrlParser: true ,useUnifiedTopology: true })
 
 .then(()=>{
@@ -40,7 +40,7 @@ mongoose.connection.once("open",(err)=>{
     console.log(colors.bgBlue("mongoose is connected to nodejs successfully"));
   }
 })
-//mongodb+srv://saeedhassan:03443239722saeed@cluster0-ctusi.mongodb.net/test?retryWrites=true&w=majority
+//mongodb+srv://saeedhassan:<PASSWORDHERE>@cluster0-ctusi.mongodb.net/test?retryWrites=true&w=majority
 
 // ===================================
 //       SEEDING 
