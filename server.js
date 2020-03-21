@@ -1,7 +1,7 @@
 const express = require("express");
 const body_parser = require("body-parser");
 const PORT =process.env.PORT || 4000;
-const IP = process.env.IP;
+// const IP = process.env.IP;
 const app = express();
 const methodOverride = require("method-override");
 const mongoose = require('mongoose')
@@ -91,6 +91,6 @@ app.use("/campgrounds",campgroundRoutes)
 app.use("/campgrounds/:id/comments",commentRoutes)
 app.use("/",authRoutes)
 
-app.listen(PORT, IP,() =>
-  console.log(`SERVER IS RUNNING ON THE PORT ${PORT} and IP ${IP}`)
+app.listen(PORT,() =>
+  console.log(`SERVER IS RUNNING ON THE PORT ${PORT}`)
 );
