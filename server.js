@@ -1,6 +1,7 @@
 const express = require("express");
 const body_parser = require("body-parser");
 const PORT =process.env.PORT || 4000;
+const colors = require('colors');
 // const IP = process.env.IP;
 const app = express();
 const methodOverride = require("method-override");
@@ -24,13 +25,17 @@ const authRoutes = require("./routes/auth")
 //mongoose.connect("mongodb://localhost/yelp_camp_for_restful_api_deployingToHeroku",{ useNewUrlParser: true ,useUnifiedTopology: true });
 
 
-mongoose.connect("mongodb+srv://saeedhassan:03443239722saeed@cluster0-ctusi.mongodb.net/yelpcamp?retryWrites=true&w=majority",{ useNewUrlParser: true ,useUnifiedTopology: true });
-
+mongoose.connect("mongodb+srv://saeedhassan:03443239722saeed@cluster0-ctusi.mongodb.net/yelpcamp?retryWrites=true&w=majority",{ useNewUrlParser: true ,useUnifiedTopology: true })
+.then(()=>{
+  console.log(colors.bgGreen("server is connected successfully"));
+}).catch((err)=>{
+  console.log(colors.red("Error occurs in Mongoose :===>Connection",err));
+})
 mongoose.connection.once("open",(err)=>{
   if(err){
     console.log("Error in MONGOOSE connection",err);
   }else{
-    console.log("MONGOOSE is connected to Node Correctly");
+    console.log(colors.bgBlue("mongoose is connected to nodejs successfully"));
   }
 })
 //mongodb+srv://saeedhassan:03443239722saeed@cluster0-ctusi.mongodb.net/test?retryWrites=true&w=majority
@@ -92,5 +97,5 @@ app.use("/campgrounds/:id/comments",commentRoutes)
 app.use("/",authRoutes)
 
 app.listen(PORT,() =>
-  console.log(`SERVER IS RUNNING ON THE PORT ${PORT}`)
+  console.log(colors.bgMagenta(`SERVER IS RUNNING ON THE PORT ${PORT}`))
 );
