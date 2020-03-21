@@ -23,9 +23,11 @@ const authRoutes = require("./routes/auth")
 //        MONGOOSE CONFIGURATION
 // ===================================
 //mongoose.connect("mongodb://localhost/yelp_camp_for_restful_api_deployingToHeroku",{ useNewUrlParser: true ,useUnifiedTopology: true });
+var url = process.env.DATABASEURL ||"mongodb://localhost/yelp_camp_for_restful_api_deployingToHeroku" 
 
+// mongoose.connect("mongodb+srv://saeedhassan:03443239722saeed@cluster0-ctusi.mongodb.net/yelpcamp?retryWrites=true&w=majority",{ useNewUrlParser: true ,useUnifiedTopology: true })
+mongoose.connect(url,{ useNewUrlParser: true ,useUnifiedTopology: true })
 
-mongoose.connect("mongodb+srv://saeedhassan:03443239722saeed@cluster0-ctusi.mongodb.net/yelpcamp?retryWrites=true&w=majority",{ useNewUrlParser: true ,useUnifiedTopology: true })
 .then(()=>{
   console.log(colors.bgGreen("server is connected successfully"));
 }).catch((err)=>{
