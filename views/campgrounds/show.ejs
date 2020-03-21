@@ -1,0 +1,77 @@
+<%-include("../partials/header")%>
+<!--  all Bootstrap classes are same but in this we have to use container and replace sm with md -->
+<div class="container" style="margin-top: 3px;;"> 
+    <div class="row">
+        <div class="col-md-3 ">
+            <p class="lead">Yelp Camp</p>
+            <div class="list-group">
+                <li class="list-group-item active">info 1</li>
+                <li class="list-group-item">info 2</li>
+                <li class="list-group-item">info 3</li>
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <div class="img-thumbnail" style="padding:0">
+                <img class="img-responsive  img-fluid" style="width: 100%;" src="<%=foundCampground.image%>" alt="image not found">
+                <div class="caption-full" style="padding: 9px;">
+                    <h4 class="float-right">$<%=foundCampground.price%>/night</h4>
+                    <!-- <h4 class="float-right">$9.00/night</h4> -->
+                    <!-- OR pull-right -->
+                    <h4><a href="#"><%=foundCampground.name%></a></h4>
+                    <p><%=foundCampground.description%></p>
+                    <p>
+                        <em>Submitted By <%=foundCampground.author.username%></em>
+                    </p>
+                    <!-- if currentUser is false then it never for second condition , if we want to use second condition only , we will get an error to handle this error we use this -->
+                    <%if(currentUser && foundCampground.author.id.equals(currentUser._id)){%> 
+                    <a href="/campgrounds/<%=foundCampground._id%>/edit" class="btn btn-warning btn-xs">EDIT</a>
+
+                    <form action="/campgrounds/<%=foundCampground._id%>?_method=DELETE" method="POST" style="display: inline;">
+                        <button class="btn btn-danger btn-xs">DELETE</button>
+                    </form>
+                    <%}%>
+                </div>
+            </div>
+            <div class="card bg-light mt-3">
+                <div class="card-body">
+                    <!-- <p class="text-right"> -->
+                        <div class="text-right">
+                            <a class="btn btn-success" href="/campgrounds/<%=foundCampground._id%>/comments/new">Add a New Comment</a>
+                        </div>
+                        <hr>
+                        <%foundCampground.comments.forEach((comment)=>{ %>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <strong><%=comment.author.username %></strong>
+                                    <span class="float-right">10 days ago</span>
+                                    <p> <%=comment.text%></p>
+                                    <%if(currentUser && comment.author.id.equals(currentUser._id)){%> 
+                                    <a href="/campgrounds/<%=foundCampground._id%>/comments/<%=comment._id%>/edit" class="btn btn-xs btn-warning">Edit</a>
+                                    <form  style="display:inline;" action="/campgrounds/<%=foundCampground._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+                                        <button  class="btn btn-xs btn-danger" >Delelte</button>
+                                    </form>
+                                    <%}%>
+                                </div>
+                            </div>
+                            
+                        <%})%>       
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <h1>This is Show Template </h1> -->
+<!-- <p><%=foundCampground.image%></p> -->
+<!-- <h1><%=foundCampground.name%></h1> -->
+<!-- <p><%=foundCampground.name%></p> -->
+<!-- <img src="<%=foundCampground.image%>" alt="image not found"> -->
+<!-- <img src="<%=foundCampground.image%>" alt="also image not found"> -->
+<!-- <p><%=foundCampground.description%></p> -->
+<!-- <p><%=foundCampground%></p>  -->
+
+<!-- <p><a class="btn btn-success" href="/campgrounds/<%=foundCampground._id%>/comments/new">Add a New Comment</a></p> -->
+
+<!-- <%foundCampground.comments.forEach((comment)=>{ %>
+    <p><strong><%=comment.author%> </strong> - <%=comment.text%></p>
+<%})%> -->

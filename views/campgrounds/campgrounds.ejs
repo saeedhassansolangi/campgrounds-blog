@@ -1,0 +1,64 @@
+<%-include("../partials/header")-%>
+
+
+
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light m-2">
+    <div class="container-fluid">
+        <div class="navbar-header">
+    <a class="navbar-brand" href="/">Campgrounds</a>
+        </div>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav navbar-right" >
+        <li class="nav-item active" >
+          <a class="nav-link" href="/">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/">Signup</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/">logout</a>
+        </li>
+      </ul>
+    </div>
+</nav> -->
+<!-- <h4><%=currentUser%></h4> -->
+<!-- <%if(!currentUser){%>
+  <p></p>
+<%}else{%>
+  <p href="#">Currently User Signed In As <span class="btn btn-warning btn-lg"> <%=currentUser.username%></span></p>
+<%}%> -->
+
+
+<div class="container">
+    <header class="jumbotron">
+        <h1 >Welcome to Campgrounds </h1>
+        <p>View our hand-picked campgrounds from all over the world</p>
+        <p>
+            <a class="btn btn-danger btn-lg" href="/campgrounds/new">Add A New Campground</a>
+        </p>
+</header>
+
+
+<div class="row container">
+    <div class="col-l-12">
+        <h4>Our Most Popular Campgrounds</h4>
+    </div>
+</div>
+
+
+<div class="row text-center">
+        <%campgrounds.forEach((campground)=>{%>
+        <div class="col-md-3 col-sm-6">
+            <div class="img-fluid img-thumbnail" style="margin-bottom: 10px;" >
+                <img src="<%=campground.image%>" style="width:100%; height:auto;" alt="image not found">
+            <div class="caption"><h4><%=campground.name%></h4>
+            <p><a href="/campgrounds/<%=campground._id%>" class="btn btn-primary btn-xs">Click here</a></p></div>
+            </div>
+        </div>
+        <%})%>
+</div>
+
+<a href="/">Go Back to Landing Page</a>
+<%-include("../partials/footer")-%>
+</div>
