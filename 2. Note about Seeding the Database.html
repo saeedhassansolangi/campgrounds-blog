@@ -1,4 +1,11 @@
-<p>Hi Everyone!</p><p>MongoDB and Mongoose have both been updated with breaking changes recently.</p><p>Checkout <a href="https://www.udemy.com/the-web-developer-bootcamp/learn/v4/questions/3454522" rel="noopener noreferrer" target="_blank">this thread</a> to see how you can update your MongoDB and Mongoose versions while also updating your syntax to avoid the breaking changes.</p><p>In the next lecture (<strong>YelpCamp: Seeding the Database</strong>) you can just use the following code for your <code>seeds.js</code>  file <em>instead of using the code from the video</em>:</p><pre class="prettyprint linenums">var mongoose = require("mongoose");
+<p>Hi Everyone!</p>
+<p>MongoDB and Mongoose have both been updated with breaking changes recently.</p>
+<p>Checkout <a href="https://www.udemy.com/the-web-developer-bootcamp/learn/v4/questions/3454522"
+        rel="noopener noreferrer" target="_blank">this thread</a> to see how you can update your MongoDB and Mongoose
+    versions while also updating your syntax to avoid the breaking changes.</p>
+<p>In the next lecture (<strong>YelpCamp: Seeding the Database</strong>) you can just use the following code for your
+    <code>seeds.js</code>  file <em>instead of using the code from the video</em>:</p>
+<pre class="prettyprint linenums">var mongoose = require("mongoose");
 var Campground = require("./models/campground");
 var Comment   = require("./models/comment");
 
@@ -61,4 +68,9 @@ function seedDB(){
     //add a few comments
 }
 
-module.exports = seedDB;</pre><p>If you run into the <code>Cannot read property 'name' of null</code>  error, it's because now that we have the seeds function in app.js the campgrounds get deleted and recreated every time we start or restart the app. <br>This means that, although they look the same, each campground has a brand new id in the database. <br>If you want to avoid this error then you can either, comment out seedDB() in app.js or just be sure to go back to the campgrounds index page before going to any of the show pages.<br>-------<br>Thanks,<br>Ian</p>
+module.exports = seedDB;</pre>
+<p>If you run into the <code>Cannot read property 'name' of null</code>  error, it's because now that we have the seeds
+    function in app.js the campgrounds get deleted and recreated every time we start or restart the app. <br>This means
+    that, although they look the same, each campground has a brand new id in the database. <br>If you want to avoid this
+    error then you can either, comment out seedDB() in app.js or just be sure to go back to the campgrounds index page
+    before going to any of the show pages.<br>-------<br>Thanks,<br>Ian</p>
